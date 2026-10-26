@@ -1,0 +1,63 @@
+# AeroMind-AI — run the whole stack locally or on a ground station.
+#
+#   cp .env.example .env   # put GEMINI_API_KEY in .env (create it, not committed)
+#   docker compose up dashboard simulation     # no key needed
+#   docker compose --profile flight up autopilot workflow
+#
+# Images default to your Docker Hub namespace — set DOCKERHUB_USERNAME
+# in .env or your shell, e.g. DOCKERHUB_USERNAME=ddkellar01
+name: aeromind-ai
+
+x-common: &common
+  environment:
+    PYTHONUNBUFFERED: "1"
+    GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+  restart: "no"
+
+services:
+  autopilot:
+    <<: *common
+    build:
+      context: .
+      dockerfile: Dockerfile.autopilot
+    image: ${DOCKERHUB_USERNAME:-ddkellar01}/aeromind-autopilot:latest
+    profiles: [flight]
+
+  workflow:
+    <<: *common
+    build:
+      context: .
+      dockerfile: Dockerfile.workflow
+    image: ${DOCKERHUB_USERNAME:-ddkellar01}/aeromind-workflow:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - aeromind-logs:/app/data
+    profiles: [flight]
+
+  dashboard:
+    <<: *common
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    image: ${DOCKERHUB_USERNAME:-ddkellar01}/aeromind-dashboard:latest
+    ports:
+      - "8081:8080"
+
+  simulation:
+    <<: *common
+    build:
+      context: .
+      dockerfile: Dockerfile.simulation
+    image: ${DOCKERHUB_USERNAME:-ddkellar01}/aeromind-simulation:latest
+
+  core:
+    <<: *common
+    build:
+      context: .
+      dockerfile: Dockerfile.core
+    image: ${DOCKERHUB_USERNAME:-ddkellar01}/aeromind-core:latest
+    profiles: [tools]
+
+volumes:
+  aeromind-logs:
