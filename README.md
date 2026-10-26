@@ -57,7 +57,6 @@ AeroMind AI is an unmanned, zero-crew autonomous flight driver leveraging Gemini
 
 ## 🏛️ What Is This About?
 
-### What this does
 1. **Telemetry Ingestion**: Ingests real-time flight telemetry (altitude, airspeed, heading, pitch, roll, G-force, GPS coordinates, and vertical speed) over a UDP socket bridge from Google Earth or simulator feeds.
 2. **Sensor Processing**: Applies noise reduction and complementary smoothing across raw telemetry signals via `sensor_fusion.py`.
 3. **Reasoning & Flight Correction**: Streams sensor fusion payloads and waypoint navigation markers into **Gemini 4 Argon**, receiving structured JSON flight control parameters (elevator, aileron, rudder, and throttle adjustments).
