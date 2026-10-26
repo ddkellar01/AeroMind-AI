@@ -1,3 +1,5 @@
+![AeroMind AI](1793053730449.jpg)
+
 # AeroMind-AI
 
 [![AeroMind AI CI/CD & Simulation Pipeline](https://github.com/ddkellar01/AeroMind-AI/actions/workflows/autopilot.yml/badge.svg)](https://github.com/ddkellar01/AeroMind-AI/actions/workflows/autopilot.yml)
