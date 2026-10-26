@@ -63,6 +63,8 @@ AeroMind AI is an unmanned, zero-crew autonomous flight driver leveraging Gemini
 4. **Safety Envelope Enforcement**: Checks all maneuvers against safety limits in `safety_monitor.py`. Overrides controls automatically if stall warnings, terrain proximity, or excessive G-forces are detected.
 5. **Real-time Dashboard & Blackbox**: Exposes live telemetry and control loop telemetry via a Flask HTTP/WebSocket dashboard and records immutable flight logs locally and to cloud storage.
 
+[https://labs.google/fx/tools/flow/shared/video/](https://labs.google/fx/tools/flow/shared/video/)
+
 ### Why is this cool?
 * **Zero-Crew Autonomous Control**: Replaces traditional human autopilot rules with a high-reasoning multimodal LLM capable of understanding contextual flight conditions.
 * **Deterministic Safety Layer**: Combines non-deterministic neural reasoning with deterministic mathematical safety bounds to guarantee flight envelope compliance.
