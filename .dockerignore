@@ -1,0 +1,13 @@
+.git
+.github
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+.venv
+venv
+*.log
+flight_blackbox.log
+.DS_Store
+*.md
+!README.md
