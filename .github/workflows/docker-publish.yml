@@ -1,0 +1,57 @@
+name: Publish Docker images to Docker Hub
+
+# Builds every AeroMind Dockerfile and pushes straight to Docker Hub.
+# No shell publish script — login-action + build-push-action only
+# (the Crypto-Recovery-Forensics failure mode was a GHCR-pointed workflow
+# plus a non-executable publish script; both are avoided here).
+#
+# Required repo secrets (Settings -> Secrets and variables -> Actions):
+#   DOCKERHUB_USERNAME  e.g. ddkellar01
+#   DOCKERHUB_TOKEN     Docker Hub access token (not your password)
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*.*.*"]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Root Dockerfile == Dockerfile.autopilot (same image, built once)
+          - dockerfile: Dockerfile
+            image: aeromind-autopilot
+          - dockerfile: Dockerfile.dashboard
+            image: aeromind-dashboard
+          - dockerfile: Dockerfile.workflow
+            image: aeromind-workflow
+          - dockerfile: Dockerfile.simulation
+            image: aeromind-simulation
+          - dockerfile: Dockerfile.core
+            image: aeromind-core
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push ${{ matrix.image }}
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image }}:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image }}:${{ github.sha }}
