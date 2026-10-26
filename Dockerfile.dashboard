@@ -1,0 +1,30 @@
+# AeroMind-AI — dashboard service (dashboard_ui.py)
+# Flask telemetry dashboard. dashboard_ui.py has no __main__ block, so the
+# CMD calls run_dashboard_server() directly — no source edits needed.
+#
+# Build:  docker build -f Dockerfile.dashboard -t <DOCKERHUB_USERNAME>/aeromind-dashboard:latest .
+# Run:    docker run --rm -p 8080:8080 <DOCKERHUB_USERNAME>/aeromind-dashboard:latest
+# Check:  curl http://localhost:8080/api/status
+FROM python:3.10-slim-bookworm
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY *.py ./
+
+RUN useradd --create-home --uid 10001 aeromind \
+    && chown -R aeromind:aeromind /app
+USER aeromind
+
+EXPOSE 8080
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/api/status', timeout=4)"
+
+CMD ["python", "-c", "from dashboard_ui import run_dashboard_server; run_dashboard_server()"]
