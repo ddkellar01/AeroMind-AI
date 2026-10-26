@@ -1,0 +1,25 @@
+# AeroMind-AI — autopilot service (autopilot_core.py)
+# Gemini flight-control loop: telemetry in via earth_bridge (UDP 5500),
+# control surfaces out at ~2Hz. Requires GEMINI_API_KEY at run time.
+#
+# Build:  docker build -f Dockerfile.autopilot -t <DOCKERHUB_USERNAME>/aeromind-autopilot:latest .
+# Run:    docker run --rm -e GEMINI_API_KEY=<your-key> <DOCKERHUB_USERNAME>/aeromind-autopilot:latest
+FROM python:3.10-slim-bookworm
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY *.py ./
+
+RUN useradd --create-home --uid 10001 aeromind \
+    && chown -R aeromind:aeromind /app
+USER aeromind
+
+# No port listens in this service — it is a UDP client to the sim bridge.
+CMD ["python", "autopilot_core.py"]
