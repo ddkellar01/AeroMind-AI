@@ -1,0 +1,25 @@
+# AeroMind-AI — simulation harness service (simulation_harness.py)
+# Edge-case injector used by CI (microburst / sensor dropout). Needs no
+# Gemini key and no network — safe as a one-shot test container.
+#
+# Build:  docker build -f Dockerfile.simulation -t <DOCKERHUB_USERNAME>/aeromind-simulation:latest .
+# Run:    docker run --rm <DOCKERHUB_USERNAME>/aeromind-simulation:latest
+#         -> runs both edge cases and exits 0 on success
+FROM python:3.10-slim-bookworm
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY *.py ./
+
+RUN useradd --create-home --uid 10001 aeromind \
+    && chown -R aeromind:aeromind /app
+USER aeromind
+
+CMD ["python", "-c", "from simulation_harness import SimulationHarness; h = SimulationHarness(); print('microburst ->', h.inject_edge_case('microburst')); print('sensor_drop ->', h.inject_edge_case('sensor_drop')); print('Simulation harness OK')"]
