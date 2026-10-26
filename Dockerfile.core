@@ -1,0 +1,27 @@
+# AeroMind-AI — core library image (all modules, no long-running service)
+# Ships every AeroMind module (earth_bridge, sensor_fusion, safety_monitor,
+# waypoint_navigator, weather_fetcher, logger_blackbox, prompts + the
+# workflow companions) as a reusable base / toolbox image. Default CMD is an
+# import smoke test that exits 0 — override CMD to use it as a base or REPL.
+#
+# Build:  docker build -f Dockerfile.core -t <DOCKERHUB_USERNAME>/aeromind-core:latest .
+# Run:    docker run --rm <DOCKERHUB_USERNAME>/aeromind-core:latest
+# Shell:  docker run --rm -it <DOCKERHUB_USERNAME>/aeromind-core:latest python
+FROM python:3.10-slim-bookworm
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY *.py ./
+
+RUN useradd --create-home --uid 10001 aeromind \
+    && chown -R aeromind:aeromind /app
+USER aeromind
+
+CMD ["python", "-c", "import earth_bridge, sensor_fusion, safety_monitor, waypoint_navigator, weather_fetcher, logger_blackbox, prompts, simulation_harness, dashboard_ui; print('AeroMind core modules OK')"]
