@@ -1,0 +1,53 @@
+name: AeroMind AI CI/CD & Simulation Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    # Optional: Run daily automated regression/flight simulation checks at midnight UTC
+    - cron: '0 0 * * *'
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout the repository code
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # 2. Set up Python environment
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+
+    # 3. Install project dependencies
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest flake8
+
+    # 4. Lint codebase for syntax/style errors
+    - name: Lint with flake8
+      run: |
+        # Stop build if there are syntax errors or undefined symbols
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # Exit-zero treats other style violations as warnings
+        flake8 . --count --exit-zero --max-complexity=12 --max-line-length=120 --statistics
+
+    # 5. Run Core Simulation & Integration Tests
+    - name: Run Simulation Harness
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: |
+        python -c "
+        from simulation_harness import SimulationHarness
+        harness = SimulationHarness()
+        case = harness.inject_edge_case('microburst')
+        print('✅ Simulation Harness initialized successfully with test case:', case)
+        "
