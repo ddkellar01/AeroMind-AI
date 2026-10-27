@@ -133,4 +133,4 @@ AeroMind AI is an unmanned, zero-crew autonomous flight driver leveraging Gemini
 
 </div>
 
-![Full Project Payload](./images/Screenshot_20261026-174536_Muse~2.jpg)
+![Screenshot Title](./images/Screenshot_20261026-174536_Muse~2.jpg)
