@@ -91,47 +91,44 @@ AeroMind AI is an unmanned, zero-crew autonomous flight driver leveraging Gemini
    git clone [https://github.com/ddkellar01/AeroMind-AI.git](https://github.com/ddkellar01/AeroMind-AI.git)
    cd AeroMind-AI
 
-<div align="left">
-
-📂 `AeroMind-AI`
-├── 🤖 `ai_core/`
-│   ├── 🧠 `models/`
-│   │   ├── 🔮 `inference.py`
-│   │   └── ⚖️ `reranker.py`
-│   ├── 🔄 `pipelines/`
-│   │   ├── 🌊 `agent_loop.py`
-│   │   └── 📊 `telemetry.py`
-│   └── 🛠️ `utils/`
-│       └── 🧮 `embeddings.py`
-├── ⚙️ `backend/`
-│   ├── 🚀 `api/`
-│   │   ├── 🌐 `routes.py`
-│   │   └── 🔌 `websocket.py`
-│   ├── 🗄️ `database/`
-│   │   ├── 🔌 `connection.py`
-│   │   └── 📜 `schema.sql`
-│   └── 🚦 `main.py`
-├── 💻 `frontend/`
-│   ├── 📱 `components/`
-│   │   ├── 🧭 `Dashboard.tsx`
-│   │   └── 💬 `ChatPanel.tsx`
-│   ├── 🎨 `styles/`
-│   │   └── 🌈 `globals.css`
-│   └── 📄 `App.tsx`
-├── 🧪 `tests/`
-│   ├── 🔬 `test_ai.py`
-│   └── 🛡️ `test_backend.py`
-├── 🐋 `docker/`
-│   ├── 🐳 `Dockerfile.backend`
-│   └── ⛵ `Dockerfile.frontend`
-├── 🖼️ `assets/`
-│   └── 📸 `Screenshot_20261026-174536_Muse~2.jpg`
-├── 📜 `.env.example`
-├── 🐙 `.gitignore`
-├── 🐳 `docker-compose.yml`
-├── 📦 `package.json`
-├── 📋 `README.md`
-└── ⚙️ `requirements.txt`
+📁 AeroMind-AI/
+├── 📁 .github/
+│   └── 📁 workflows/
+│       ├── ⚙️ autopilot.yml
+│       └── 🐳 docker-publish.yml
+├── 🚫 .dockerignore
+├── 🔐 .env.example
+├── 🚫 .gitignore
+├── 🖼️ 1793053730449.jpg
+├── 🐳 Dockerfile
+├── 🐳 Dockerfile.autopilot
+├── 🐳 Dockerfile.core
+├── 🐳 Dockerfile.dashboard
+├── 🐳 Dockerfile.simulation
+├── 🐳 Dockerfile.workflow
+├── 📜 LICENSE
+├── 📖 README.md
+├── 📸 Screenshot_20261026-174536_Muse~2.jpg
+├── 🎛️ actuator_calibrator.py
+├── 🧠 autopilot_core.py
+├── ☁️ cloud_sync.py
+├── 🛡️ collision_avoidance.py
+├── 📊 dashboard_ui.py
+├── 📦 docker-compose.yml
+├── 🌍 earth_bridge.py
+├── 🚨 emergency_handler.py
+├── ⬛ logger_blackbox.py
+├── 💬 prompts.py
+├── 📋 requirements.txt
+├── ❤️‍🩹 safety_monitor.py
+├── 🔀 sensor_fusion.py
+├── 🧪 simulation_harness.py
+├── 🩺 system_diagnostics.py
+├── 📡 telemetry_streamer.py
+├── 👁️ vision_mapper.py
+├── 🧭 waypoint_navigator.py
+├── 🌦️ weather_fetcher.py
+└── 🔄 workflows.py
 
 
 ![AeroMind AI Screenshot](./Screenshot_20261026-174536_Muse~2.jpg)
