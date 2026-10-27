@@ -90,3 +90,47 @@ AeroMind AI is an unmanned, zero-crew autonomous flight driver leveraging Gemini
    ```bash
    git clone [https://github.com/ddkellar01/AeroMind-AI.git](https://github.com/ddkellar01/AeroMind-AI.git)
    cd AeroMind-AI
+
+<div align="right">
+
+📂 `AeroMind-AI`
+├── 🤖 `ai_core/`
+│   ├── 🧠 `models/`
+│   │   ├── 🔮 `inference.py`
+│   │   └── ⚖️ `reranker.py`
+│   ├── 🔄 `pipelines/`
+│   │   ├── 🌊 `agent_loop.py`
+│   │   └── 📊 `telemetry.py`
+│   └── 🛠️ `utils/`
+│       └── 🧮 `embeddings.py`
+├── ⚙️ `backend/`
+│   ├── 🚀 `api/`
+│   │   ├── 🌐 `routes.py`
+│   │   └── 🔌 `websocket.py`
+│   ├── 🗄️ `database/`
+│   │   ├── 🔌 `connection.py`
+│   │   └── 📜 `schema.sql`
+│   └── 🚦 `main.py`
+├── 💻 `frontend/`
+│   ├── 📱 `components/`
+│   │   ├── 🧭 `Dashboard.tsx`
+│   │   └── 💬 `ChatPanel.tsx`
+│   ├── 🎨 `styles/`
+│   │   └── 🌈 `globals.css`
+│   └── 📄 `App.tsx`
+├── 🧪 `tests/`
+│   ├── 🔬 `test_ai.py`
+│   └── 🛡️ `test_backend.py`
+├── 🐋 `docker/`
+│   ├── 🐳 `Dockerfile.backend`
+│   └── ⛵ `Dockerfile.frontend`
+├── 📜 `.env.example`
+├── 🐙 `.gitignore`
+├── 🐳 `docker-compose.yml`
+├── 📦 `package.json`
+├── 📋 `README.md`
+└── ⚙️ `requirements.txt`
+
+</div>
+
+![Full Project Payload](./images/Screenshot_20261026-174536_Muse~2.jpg)
