@@ -91,7 +91,7 @@ AeroMind AI is an unmanned, zero-crew autonomous flight driver leveraging Gemini
    git clone [https://github.com/ddkellar01/AeroMind-AI.git](https://github.com/ddkellar01/AeroMind-AI.git)
    cd AeroMind-AI
 
-<div align="right">
+<div align="left">
 
 📂 `AeroMind-AI`
 ├── 🤖 `ai_core/`
