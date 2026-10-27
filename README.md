@@ -124,6 +124,8 @@ AeroMind AI is an unmanned, zero-crew autonomous flight driver leveraging Gemini
 ├── 🐋 `docker/`
 │   ├── 🐳 `Dockerfile.backend`
 │   └── ⛵ `Dockerfile.frontend`
+├── 🖼️ `assets/`
+│   └── 📸 `Screenshot_20261026-174536_Muse~2.jpg`
 ├── 📜 `.env.example`
 ├── 🐙 `.gitignore`
 ├── 🐳 `docker-compose.yml`
