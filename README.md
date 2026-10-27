@@ -92,39 +92,37 @@ AeroMind AI is an unmanned, zero-crew autonomous flight driver leveraging Gemini
    cd AeroMind-AI
 
 📁 AeroMind-AI/
-├── 📁 .github/
-│   └── 📁 workflows/
+├── 📂 .github/
+│   └── 📂 workflows/
 │       ├── ⚙️ autopilot.yml
-│       └── 🐳 docker-publish.yml
+│       └── 🚀 docker-publish.yml
 ├── 🚫 .dockerignore
 ├── 🔐 .env.example
-├── 🚫 .gitignore
-├── 🖼️ 1793053730449.jpg
+├── 🙈 .gitignore
 ├── 🐳 Dockerfile
-├── 🐳 Dockerfile.autopilot
-├── 🐳 Dockerfile.core
-├── 🐳 Dockerfile.dashboard
-├── 🐳 Dockerfile.simulation
-├── 🐳 Dockerfile.workflow
+├── 🤖 Dockerfile.autopilot
+├── ⚡ Dockerfile.core
+├── 📊 Dockerfile.dashboard
+├── 🔄 Dockerfile.simulation
+├── ⚙️ Dockerfile.workflow
 ├── 📜 LICENSE
 ├── 📖 README.md
-├── 📸 Screenshot_20261026-174536_Muse~2.jpg
+├── 📋 requirements.txt
+├── 🐙 docker-compose.yml
 ├── 🎛️ actuator_calibrator.py
 ├── 🧠 autopilot_core.py
 ├── ☁️ cloud_sync.py
 ├── 🛡️ collision_avoidance.py
-├── 📊 dashboard_ui.py
-├── 📦 docker-compose.yml
+├── 📈 dashboard_ui.py
 ├── 🌍 earth_bridge.py
 ├── 🚨 emergency_handler.py
 ├── ⬛ logger_blackbox.py
 ├── 💬 prompts.py
-├── 📋 requirements.txt
-├── ❤️‍🩹 safety_monitor.py
-├── 🔀 sensor_fusion.py
-├── 🧪 simulation_harness.py
+├── ❤️ safety_monitor.py
+├── 📡 sensor_fusion.py
+├── 💉 simulation_harness.py
 ├── 🩺 system_diagnostics.py
-├── 📡 telemetry_streamer.py
+├── 📶 telemetry_streamer.py
 ├── 👁️ vision_mapper.py
 ├── 🧭 waypoint_navigator.py
 ├── 🌦️ weather_fetcher.py
