@@ -91,42 +91,49 @@ AeroMind AI is an unmanned, zero-crew autonomous flight driver leveraging Gemini
    git clone [https://github.com/ddkellar01/AeroMind-AI.git](https://github.com/ddkellar01/AeroMind-AI.git)
    cd AeroMind-AI
 
-📁 AeroMind-AI/
-├── 📂 .github/
-│   └── 📂 workflows/
-│       ├── ⚙️ autopilot.yml
-│       └── 🚀 docker-publish.yml
-├── 🚫 .dockerignore
-├── 🔐 .env.example
-├── 🙈 .gitignore
-├── 🐳 Dockerfile
-├── 🤖 Dockerfile.autopilot
-├── ⚡ Dockerfile.core
-├── 📊 Dockerfile.dashboard
-├── 🔄 Dockerfile.simulation
-├── ⚙️ Dockerfile.workflow
-├── 📜 LICENSE
-├── 📖 README.md
-├── 📋 requirements.txt
-├── 🐙 docker-compose.yml
-├── 🎛️ actuator_calibrator.py
-├── 🧠 autopilot_core.py
-├── ☁️ cloud_sync.py
-├── 🛡️ collision_avoidance.py
-├── 📈 dashboard_ui.py
-├── 🌍 earth_bridge.py
-├── 🚨 emergency_handler.py
-├── ⬛ logger_blackbox.py
-├── 💬 prompts.py
-├── ❤️ safety_monitor.py
-├── 📡 sensor_fusion.py
-├── 💉 simulation_harness.py
-├── 🩺 system_diagnostics.py
-├── 📶 telemetry_streamer.py
-├── 👁️ vision_mapper.py
-├── 🧭 waypoint_navigator.py
-├── 🌦️ weather_fetcher.py
-└── 🔄 workflows.py
+AeroMind-AI/
+├── .github/
+│   └── workflows/
+│       ├── autopilot.yml
+│       └── docker-publish.yml
+├── 🐳 Dockerfiles/
+│   ├── Dockerfile
+│   ├── Dockerfile.autopilot
+│   ├── Dockerfile.core
+│   ├── Dockerfile.dashboard
+│   ├── Dockerfile.simulation
+│   └── Dockerfile.workflow
+├── 🧠 Core Systems/
+│   ├── autopilot_core.py
+│   ├── collision_avoidance.py
+│   ├── safety_monitor.py
+│   ├── sensor_fusion.py
+│   └── vision_mapper.py
+├── 🌐 Networking & Bridge/
+│   ├── cloud_sync.py
+│   ├── earth_bridge.py
+│   ├── telemetry_streamer.py
+│   └── weather_fetcher.py
+├── 🛠️ Operations & Hardware/
+│   ├── actuator_calibrator.py
+│   ├── dashboard_ui.py
+│   ├── emergency_handler.py
+│   ├── simulation_harness.py
+│   ├── system_diagnostics.py
+│   ├── waypoint_navigator.py
+│   └── workflows.py
+├── ⚙️ Utility & Logging/
+│   ├── logger_blackbox.py
+│   └── prompts.py
+├── Configs & Meta/
+│   ├── .dockerignore
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── docker-compose.yml
+│   ├── requirements.txt
+│   ├── LICENSE
+│   └── README.md
+
 
 
 ![AeroMind AI Screenshot](./Screenshot_20261026-174536_Muse~2.jpg)
